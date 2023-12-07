@@ -3,8 +3,13 @@
     "playwright": "^1.40.1"
   },
   "devDependencies": {
+    "@cucumber/cucumber": "^10.0.1",
     "@playwright/test": "^1.40.1",
-    "@types/node": "^20.10.3"
+    "@types/node": "^20.10.3",
+    "allure-playwright": "^2.9.2",
+    "ts-node": "^10.9.1"
   },
-  "scripts": {}
+  "scripts": {
+    "test": "cucumber-js test"
+  }
 }
