@@ -1,17 +1,21 @@
-import {Before, setDefaultTimeout} from "@cucumber/cucumber";
-import {Browser, chromium} from "@playwright/test";
+import {Before, BeforeAll, setDefaultTimeout} from "@cucumber/cucumber";
+import {Browser, BrowserContext, chromium} from "@playwright/test";
 import {Page} from "playwright";
 import * as config from "../../../config.json"
 
 let browser: Browser;
+let context: BrowserContext;
 let page: Page;
 
 setDefaultTimeout(60000);
 
-Before(async () => {
+BeforeAll(async () => {
     browser = await chromium.launch(config.testSetup.local);
-    const context = await browser.newContext();
+});
+
+Before(async () => {
+    context = await browser.newContext();
     page = await context.newPage();
 });
 
-export {page, browser, config}
+export {page, browser, context, config}
