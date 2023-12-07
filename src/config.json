@@ -1,0 +1,10 @@
+{
+  "baseUrl": "https://999.md/",
+  "testSetup": {
+    "local": {
+      "args": ["--start-maximized", "--ignore-certificate-errors"],
+      "headless": false,
+      "slowMo": 100
+    }
+  }
+}
