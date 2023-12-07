@@ -1,10 +1,14 @@
-import {After} from "@cucumber/cucumber";
-import {TestStepResultStatus} from "@cucumber/messages";
-import {browser, page} from "./before-hook";
+import {After, AfterAll, Status} from "@cucumber/cucumber";
+import {browser, context, page} from "./before-hook";
 
-After(async (Scenario) => {
-    if(Scenario.result!.status === TestStepResultStatus.FAILED){
-       // await this.attach(await page.screenshot())
-    }
+After(async (scenario) => {
+    // if(scenario.result!.status === Status.FAILED){
+    //     const screenshot = await page.screenshot();
+    //     await this.attach(screenshot, "image/png");
+    // }
+    await context.close();
+});
+
+AfterAll(async () => {
     await browser.close();
 });

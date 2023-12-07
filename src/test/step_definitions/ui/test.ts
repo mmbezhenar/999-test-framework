@@ -1,5 +1,5 @@
 import {Then, When} from "@cucumber/cucumber";
-import {page} from "./hooks/before-hook";
+import {page} from "../hooks/before-hook";
 import {expect} from "playwright/test";
 
 When(/^I navigate to 999$/, async () => {
