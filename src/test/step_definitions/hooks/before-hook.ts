@@ -10,6 +10,10 @@ let page: Page;
 setDefaultTimeout(60000);
 
 BeforeAll(async () => {
+    // browser = await chromium.launch({
+    //     headless: false,
+    //     args: ['--window-size=1920,1040']
+    // })
     browser = await chromium.launch(config.testSetup.local);
 });
 
