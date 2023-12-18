@@ -4,10 +4,14 @@ import {page} from "../hooks/before-hook";
 import SearchPage from "../../../poms/SearchPage";
 import {expect} from "playwright/test";
 
-Then(/^I'm looking for a product$/, async () => {
-   await new MainPage(page).searchProduct();
+let mainPage: MainPage;
+let searchPage: SearchPage;
+Then(/^I'm looking for a product/, async () => {
+   mainPage = new MainPage(page);
+   await mainPage.searchProduct();
 
 });
-Then(/^I see search results$/, async () => {
-    await expect(new SearchPage(page).resultsTitle).toBeVisible();
+Then(/^I see search results/, async () => {
+    searchPage = new SearchPage(page);
+    await expect(searchPage.resultsTitle).toBeVisible();
 });

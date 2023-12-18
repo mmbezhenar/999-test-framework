@@ -1,24 +1,28 @@
 import {Page} from "playwright"
-import {Locator} from "@playwright/test";
-import {config} from "../test/step_definitions/hooks/before-hook";
+import {FrameLocator, Locator} from "@playwright/test";
+import * as data from "../data.json";
 
 export default class MainPage {
     readonly page: Page;
-    readonly usernameButton: Locator;
-    readonly searchInput: Locator;
+    readonly usernameDropDown: Locator;
+    readonly search: Locator;
     readonly submitSearch: Locator;
+    readonly cabinetDropDown: Locator;
+    readonly iframe: FrameLocator;
 
 
     constructor(page: Page) {
         this.page = page;
-        this.usernameButton = page.locator("//button[text() = 'TestPlaywright']")
-        this.searchInput = page.locator("//input[@id = 'js-search-input']")
-        this.submitSearch = page.locator("//button[@type = 'submit']")
+        this.cabinetDropDown = page.locator('//div[@data-autotest="cabinet"]')
+        this.iframe = page.frameLocator('//iframe[@id="topbar-panel"]');
+        this.usernameDropDown = page.locator('//button[@id="user-username-btn"]');
+        this.search = page.locator("//input[@id = 'js-search-input']");
+        this.submitSearch = page.locator("//button[@type = 'submit']");
     }
 
     async searchProduct(){
-        await this.searchInput.click();
-        await this.searchInput.fill(config.credentials.product);
+        await this.search.click();
+        await this.search.fill(data.searchData.product);
         await this.submitSearch.click();
     }
 }
