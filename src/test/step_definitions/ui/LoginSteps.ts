@@ -13,7 +13,7 @@ Given(/^I am on the 999.md login page/, async () => {
 });
 When(/^I perform login action/, async () => {
     loginPage = new LoginPage(page);
-    await loginPage.login(config.credentials.username, config.credentials.password);
+    await loginPage.login(config.credentials.email, config.credentials.password);
 });
 Then(/^I should be redirected to the home page/, async () => {
     mainPage = new MainPage(page);

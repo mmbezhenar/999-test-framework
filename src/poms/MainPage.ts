@@ -9,6 +9,7 @@ export default class MainPage {
     readonly submitSearch: Locator;
     readonly cabinetDropDown: Locator;
     readonly iframe: FrameLocator;
+    readonly settingsButton: Locator;
 
 
     constructor(page: Page) {
@@ -18,6 +19,7 @@ export default class MainPage {
         this.usernameDropDown = page.locator('//button[@id="user-username-btn"]');
         this.search = page.locator("//input[@id = 'js-search-input']");
         this.submitSearch = page.locator("//button[@type = 'submit']");
+        this.settingsButton = page.locator('//span[@class = "user-item-btn-settings-icon"]')
     }
 
     async searchProduct(){
