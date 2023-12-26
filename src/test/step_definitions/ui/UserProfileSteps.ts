@@ -25,7 +25,8 @@ Then(/I switch the language to Russian/, async () => {
 });
 
 Then(/I verify that the language is changed to Russian/, async () => {
+    const language = 'русский';
     mainPage = new MainPage(page);
     await expect(mainPage.placeAdButton).toBeVisible();
-    await expect(mainPage.iframe.locator(mainPage.languageButton.last())).toHaveText("русский");
+    await expect(mainPage.iframe.locator(mainPage.languageButton.last())).toHaveText(language);
 });
