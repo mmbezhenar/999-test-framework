@@ -1,22 +1,22 @@
-import {When} from "@cucumber/cucumber";
+import {Given, When} from "@cucumber/cucumber";
 import CategoryPage from "../../../poms/CategoryPage";
 import {page} from "../hooks/before-hook";
 import {expect} from "@playwright/test";
 
-let categoryPage: CategoryPage;
 When(/I navigate to the categories section/, async () => {
-    categoryPage = new CategoryPage(page);
-    await page.waitForLoadState('load');
-    await categoryPage.categoryButton.click();
-    await expect(categoryPage.categoryList).toBeVisible();
-});
-When(/I open the computers category/, async () => {
-    categoryPage = new CategoryPage(page);
-    await categoryPage.computerCategoryButton.click();
+        const categoryPage = new CategoryPage(page);
+        await categoryPage.categoryButtonClick();
+        await expect(categoryPage.categoryList).toBeVisible();
+    }
+);
+Given(/I open the (.*) category/, async (category: string) => {
+    const categoryPage = new CategoryPage(page);
+    await categoryPage.categoryClick(category);
     await expect(categoryPage.subcategoriesList).toBeVisible();
 });
-When(/I browse the available laptop products/, async () => {
-    categoryPage = new CategoryPage(page);
-    await categoryPage.laptopCategoryButton.click()
+Given(/I browse the available (.*) products/, async (productType: string) => {
+    const categoryPage = new CategoryPage(page);
+    await categoryPage.subCategoryClick(productType);
+    await categoryPage.adsList.waitFor({state: "visible"});
     await expect(categoryPage.adsList).toBeVisible();
 });

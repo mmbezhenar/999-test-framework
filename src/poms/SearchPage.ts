@@ -1,13 +1,22 @@
 import {Page} from "playwright"
-import {Locator} from "@playwright/test";
-import * as data from "../data.json";
+import {expect} from "@playwright/test";
+import MainPage from "./MainPage";
 
 export default class SearchPage {
     readonly page: Page;
-    readonly resultsTitle: Locator;
 
     constructor(page: Page) {
         this.page = page;
-        this.resultsTitle = page.locator('//span[contains(text(), "' + data.searchData.product + '")]');
     }
+
+    async searchProduct(product: string) {
+        const mainPage = new MainPage(this.page);
+        await mainPage.search.click();
+        await mainPage.search.fill(product);
+        await mainPage.submitSearch.click();
+    }
+
+    async verifyPresenceProduct(product: string) {
+        return expect(this.page.locator('//span[contains(text(), "' + product + '")]')).toBeVisible();
+    };
 }

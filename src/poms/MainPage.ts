@@ -1,6 +1,5 @@
 import {Page} from "playwright"
-import {FrameLocator, Locator} from "@playwright/test";
-import * as data from "../data.json";
+import {expect, FrameLocator, Locator} from "@playwright/test";
 
 export default class MainPage {
     readonly page: Page;
@@ -12,7 +11,9 @@ export default class MainPage {
     readonly settingsButton: Locator;
     readonly languageButton: Locator;
     readonly russianLangButton: Locator;
-    readonly placeAdButton: Locator;
+    readonly romanianLangButton: Locator;
+    readonly adButtonRussian: Locator;
+    readonly adButtonRomanian: Locator;
 
 
     constructor(page: Page) {
@@ -25,17 +26,37 @@ export default class MainPage {
         this.settingsButton = page.locator('//span[@class = "user-item-btn-settings-icon"]');
         this.languageButton = page.locator('//button[@class = "user-item-btn"]');
         this.russianLangButton = page.locator('//button[text() = "русский"]');
-        this.placeAdButton = page.locator('//a[text() = "Подать объявление"]');
+        this.romanianLangButton = page.locator('//button[@data-lang = "ro"]');
+        this.adButtonRussian = page.locator('//a[text() = "Подать объявление"]');
+        this.adButtonRomanian = page.locator('//a[text() = "Adaugă "]');
     }
 
-    async searchProduct() {
-        await this.search.click();
-        await this.search.fill(data.searchData.product);
-        await this.submitSearch.click();
-    }
-
-    async setLanguageToRussian() {
+    async setLanguage(language: string) {
         await this.iframe.locator(this.languageButton.last()).click();
-        await this.iframe.locator(this.russianLangButton).click();
+        if (language === ('russian')) {
+            await this.iframe.locator(this.russianLangButton).click();
+        }
+    }
+
+    async verifyLanguage(language: string) {
+        if (language === 'russian') {
+            try {
+                await this.adButtonRussian.waitFor({state: "visible"});
+                return await expect(this.adButtonRussian).toBeVisible();
+            } catch (error) {
+                await this.page.waitForTimeout(5000);
+                await this.adButtonRussian.waitFor({state: "visible"});
+                return await expect(this.adButtonRussian).toBeVisible();
+            }
+        } else {
+            try {
+                await this.adButtonRomanian.waitFor({state: "visible"})
+                return await expect(this.adButtonRomanian).toBeVisible();
+            } catch (error) {
+                await this.page.waitForTimeout(5000);
+                await this.adButtonRomanian.waitFor({state: "visible"})
+                return await expect(this.adButtonRomanian).toBeVisible();
+            }
+        }
     }
 }

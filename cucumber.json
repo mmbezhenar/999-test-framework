@@ -4,8 +4,7 @@
       "snippetInterface": "async-await"
     },
     "paths": [
-      "src/test/features/ui/category_navigation.feature",
-      "src/test/features/api/"
+      "src/test/features/ui/"
     ],
     "dryRun": false,
     "require": [
@@ -18,6 +17,8 @@
     ],
     "format": [
       "html:cucumber-report.html"
-    ]
+    ],
+    "parallel": 5,
+    "retry": 3
   }
 }

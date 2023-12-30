@@ -1,17 +1,13 @@
 import {Then} from "@cucumber/cucumber";
-import MainPage from "../../../poms/MainPage";
 import {page} from "../hooks/before-hook";
 import SearchPage from "../../../poms/SearchPage";
-import {expect} from "playwright/test";
 
-let mainPage: MainPage;
-let searchPage: SearchPage;
-Then(/^I'm looking for a product/, async () => {
-   mainPage = new MainPage(page);
-   await mainPage.searchProduct();
-
+Then(/I'm looking for a (.*)/, async (product: string) => {
+    const searchPage = new SearchPage(page);
+    await searchPage.searchProduct(product);
 });
-Then(/^I see search results/, async () => {
-    searchPage = new SearchPage(page);
-    await expect(searchPage.resultsTitle).toBeVisible();
+Then(/I see (.*) search results/, async (product: string) => {
+    // await expect(page.locator('//span[contains(text(), "' + product + '")]')).toBeVisible();
+    const searchPage = new SearchPage(page);
+    await searchPage.verifyPresenceProduct(product);
 });
