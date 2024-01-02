@@ -1,6 +1,6 @@
-import {config} from "../test/step_definitions/hooks/before-hook";
+import {config} from "../step-definitions/hooks/before-hook";
 
-export default class Util {
+export default class RandomGenerator {
 
     static generatedUsername: string;
     static async generateUsername() {

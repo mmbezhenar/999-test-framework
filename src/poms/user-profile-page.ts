@@ -1,7 +1,7 @@
 import {Page} from "playwright"
 import {FrameLocator, Locator} from "@playwright/test";
-import MainPage from "./MainPage";
-import {config} from "../test/step_definitions/hooks/before-hook";
+import MainPage from "./main-page";
+import {config} from "../step-definitions/hooks/before-hook";
 
 export default class UserProfilePage {
     readonly page: Page;

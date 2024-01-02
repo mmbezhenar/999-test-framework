@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "playwright": "^1.40.1"
+    "playwright": "^1.40.1",
+    "winston": "^3.11.0"
   },
   "devDependencies": {
     "@cucumber/cucumber": "^10.0.1",
@@ -10,6 +11,8 @@
     "ts-node": "^10.9.1"
   },
   "scripts": {
-    "test": "cucumber-js test"
+    "test": "cucumber-js test",
+    "api": "cucumber-js --config cucumber.json --profile api",
+    "ui": "cucumber-js --config cucumber.json --profile ui"
   }
 }

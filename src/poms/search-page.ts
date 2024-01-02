@@ -1,6 +1,6 @@
 import {Page} from "playwright"
 import {expect} from "@playwright/test";
-import MainPage from "./MainPage";
+import MainPage from "./main-page";
 
 export default class SearchPage {
     readonly page: Page;

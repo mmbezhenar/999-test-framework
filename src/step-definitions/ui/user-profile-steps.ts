@@ -1,14 +1,14 @@
 import {Then} from "@cucumber/cucumber";
-import UserProfilePage from "../../../poms/UserProfilePage";
+import UserProfilePage from "../../poms/user-profile-page";
 import {page} from "../hooks/before-hook";
-import Util from "../../../utils/Util";
+import RandomGenerator from "../../support/random-generator";
 import {expect} from "@playwright/test";
-import MainPage from "../../../poms/MainPage";
+import MainPage from "../../poms/main-page";
 
 let generatedUsername: string;
 Then(/^I change the username/, async () => {
     const usernameProfilePage = new UserProfilePage(page);
-    generatedUsername = await Util.generateUsername();
+    generatedUsername = await RandomGenerator.generateUsername();
     await usernameProfilePage.changeUsername(generatedUsername);
 });
 Then(/^I verify that the username is successfully changed/, async () => {

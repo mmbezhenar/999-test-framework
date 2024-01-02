@@ -1,6 +1,6 @@
 import {Then} from "@cucumber/cucumber";
 import {page} from "../hooks/before-hook";
-import SearchPage from "../../../poms/SearchPage";
+import SearchPage from "../../poms/search-page";
 
 Then(/I'm looking for a (.*)/, async (product: string) => {
     const searchPage = new SearchPage(page);

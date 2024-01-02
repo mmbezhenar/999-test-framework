@@ -1,6 +1,6 @@
 import {Page} from "playwright";
 import {Locator} from "@playwright/test";
-import {page} from "../test/step_definitions/hooks/before-hook";
+import {page} from "../step-definitions/hooks/before-hook";
 
 export default class CategoryPage {
     readonly page: Page;

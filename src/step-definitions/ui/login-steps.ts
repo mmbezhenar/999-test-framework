@@ -1,7 +1,7 @@
 import {Given, Then, When} from "@cucumber/cucumber";
 import {config, page} from "../hooks/before-hook";
-import LoginPage from "../../../poms/LoginPage";
-import MainPage from "../../../poms/MainPage";
+import LoginPage from "../../poms/login-page";
+import MainPage from "../../poms/main-page";
 import {expect} from "playwright/test";
 
 Given(/^I am on the 999.md login page/, async () => {

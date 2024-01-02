@@ -1,5 +1,5 @@
 import {Given, When} from "@cucumber/cucumber";
-import CategoryPage from "../../../poms/CategoryPage";
+import CategoryPage from "../../poms/category-page";
 import {page} from "../hooks/before-hook";
 import {expect} from "@playwright/test";
 
