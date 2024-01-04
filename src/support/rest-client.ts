@@ -27,7 +27,7 @@ export class RestClient {
         return requestContext.get(config.restfulBookerUrl + endpoint,
             {
                 headers: RestClient.setHeaders(),
-                data: params
+                params: params
             }
         );
     }
@@ -44,7 +44,11 @@ export class RestClient {
     async put(endpoint: string, params = {}): Promise<APIResponse> {
         return requestContext.put(config.restfulBookerUrl + endpoint,
             {
-                headers: RestClient.setHeaders(),
+                headers: {
+                    'Authorization': `Basic ${await this.getToken()}`,
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
                 data: params
             }
         );
@@ -66,6 +70,7 @@ export class RestClient {
             }
         );
         logger.info(token);
+        return token;
     }
 
     public getResponseBody = async (response: APIResponse) => {
