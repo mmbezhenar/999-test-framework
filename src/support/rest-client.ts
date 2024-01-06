@@ -23,22 +23,15 @@ export class RestClient {
         });
     }
 
-    async get(endpoint: string, params = {}): Promise<APIResponse> {
-        return requestContext.get(config.restfulBookerUrl + endpoint,
+    async get(endpoint: string, baseUrl: string, params = {}): Promise<APIResponse> {
+        return requestContext.get(baseUrl + endpoint,
             {
                 headers: RestClient.setHeaders(),
                 params: params
             }
         );
     }
-    async getPets(endpoint: string, params = {}): Promise<APIResponse> {
-        return requestContext.get(config.petStoreUrl + endpoint,
-            {
-                headers: RestClient.setHeaders(),
-                params: params
-            }
-        );
-    }
+
 
     async post(endpoint: string, params = {}): Promise<APIResponse> {
         return requestContext.post(config.restfulBookerUrl + endpoint,
