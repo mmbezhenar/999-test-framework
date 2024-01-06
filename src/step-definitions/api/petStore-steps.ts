@@ -3,7 +3,9 @@ import {logger} from "../../support/logger";
 import {RestClient} from "../../support/rest-client";
 import {APIResponse} from "playwright";
 import {expect} from "@playwright/test";
+import {PetsClient} from "../../support/pets-client";
 
+let petsClient = new PetsClient();
 let restClient = new RestClient();
 let response: APIResponse;
 let responseBody: any;
@@ -11,7 +13,7 @@ When('I request pets IDs with the filter {string}, {string}', async (queryParam,
     const params = {
         [queryParam]: value
     }
-    response = await restClient.getPets("/pet/findByStatus", params);
+    response = await petsClient.getPets("/pet/findByStatus", params);
     responseBody = await restClient.getResponseBody(response);
     logger.info(response.url());
 });
