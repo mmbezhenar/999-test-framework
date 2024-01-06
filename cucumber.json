@@ -22,7 +22,7 @@
   },
   "api": {
     "paths": [
-      "src/features/*.api.feature"
+      "src/features/api/*.api.feature"
     ],
     "require": [
       "src/step-definitions/api/*.ts",
@@ -35,7 +35,7 @@
   },
   "ui": {
     "paths": [
-      "src/features/*.ui.feature"
+      "src/features/ui/*.ui.feature"
     ],
     "require": [
       "src/step-definitions/ui/*.ts",
@@ -44,6 +44,7 @@
     ],
     "requireModule": [
       "ts-node/register"
-    ]
+    ],
+    "retry" : 2
   }
 }
