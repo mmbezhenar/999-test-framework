@@ -9,6 +9,9 @@ export class PetsClient {
     async getPets(endpoint: string, params = {}): Promise<APIResponse> {
         restClient = new RestClient();
         return restClient.get(endpoint, config.petStoreUrl, params);
+    }
 
+    async postPets(endpoint: string, params = {}): Promise<APIResponse> {
+        return restClient.post(endpoint, config.petStoreUrl, params);
     }
 }
