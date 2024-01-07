@@ -33,8 +33,8 @@ export class RestClient {
     }
 
 
-    async post(endpoint: string, params = {}): Promise<APIResponse> {
-        return requestContext.post(config.restfulBookerUrl + endpoint,
+    async post(endpoint: string, baseUrl: string, params = {}): Promise<APIResponse> {
+        return requestContext.post(baseUrl + endpoint,
             {
                 headers: RestClient.setHeaders(),
                 data: params
