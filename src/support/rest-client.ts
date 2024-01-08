@@ -42,8 +42,8 @@ export class RestClient {
         );
     }
 
-    async put(endpoint: string, params = {}): Promise<APIResponse> {
-        return requestContext.put(config.restfulBookerUrl + endpoint,
+    async put(endpoint: string, baseUrl: string, params = {}): Promise<APIResponse> {
+        return requestContext.put(baseUrl + endpoint,
             {
                 headers: {
                     'Authorization': `Basic ${await this.getToken()}`,

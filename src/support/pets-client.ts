@@ -13,4 +13,8 @@ export class PetsClient {
     async postPets(endpoint: string, params = {}): Promise<APIResponse> {
         return restClient.post(endpoint, config.petStoreUrl, params);
     }
+
+    async putPets(endpoint: string, params = {}): Promise<APIResponse> {
+        return restClient.put(endpoint, config.petStoreUrl, params);
+    }
 }
