@@ -10,15 +10,12 @@ let page: Page;
 setDefaultTimeout(60000);
 
 BeforeAll(async () => {
-    // browser = await chromium.launch({
-    //     headless: false,
-    //     args: ['--window-size=1920,1040']
-    // })
-    browser = await chromium.launch(config.testSetup.local);
+    browser = await chromium.launch({ headless: false,
+        args:['--start-maximized']});
 });
 
 Before(async () => {
-    context = await browser.newContext();
+    context = await browser.newContext({ viewport: null});
     page = await context.newPage();
 });
 

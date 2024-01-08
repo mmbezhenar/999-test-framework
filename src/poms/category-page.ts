@@ -4,6 +4,7 @@ import {page} from "../step-definitions/hooks/before-hook";
 
 export default class CategoryPage {
     readonly page: Page;
+    readonly title: Locator;
     readonly categoryButton: Locator;
     readonly categoryList: Locator;
     readonly computerCategoryButton: Locator;
@@ -13,6 +14,7 @@ export default class CategoryPage {
 
     constructor(page: Page) {
         this.page = page;
+        this.title = this.page.locator('//h1');
         this.categoryButton = this.page.locator('//button[@class ="header_bar_categories_toggle"]');
         this.categoryList = this.page.locator('//div[@class = "header_bar_categories"]');
         this.computerCategoryButton = this.page.locator('//li[@data-url="computers-and-office-equipment"]');

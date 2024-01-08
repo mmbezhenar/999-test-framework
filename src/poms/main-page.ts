@@ -14,6 +14,7 @@ export default class MainPage {
     readonly romanianLangButton: Locator;
     readonly adButtonRussian: Locator;
     readonly adButtonRomanian: Locator;
+    readonly recommendations: Locator;
 
 
     constructor(page: Page) {
@@ -29,6 +30,7 @@ export default class MainPage {
         this.romanianLangButton = page.locator('//button[@data-lang = "ro"]');
         this.adButtonRussian = page.locator('//a[text() = "Подать объявление"]');
         this.adButtonRomanian = page.locator('//a[text() = "Adaugă "]');
+        this.recommendations = page.locator('//a[@class="recommended__item__link  js-item-ad-recommended"]');
     }
 
     async setLanguage(language: string) {
