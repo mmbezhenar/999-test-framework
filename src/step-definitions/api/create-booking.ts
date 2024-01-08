@@ -4,6 +4,7 @@ import {BookingDTO} from "../../support/dto/booking-dto";
 import {logger} from "../../support/logger";
 import {APIResponse} from "playwright";
 import {expect} from "@playwright/test";
+import {config} from "../hooks/before-hook.api";
 
 let restClient = new RestClient();
 let bookingData: BookingDTO;
@@ -25,7 +26,7 @@ When('I send a POST request to create a booking', async (table) => {
     };
     logger.info(bookingData);
 
-    response = await restClient.post('/booking', bookingData);
+    response = await restClient.post('/booking', config.restfulBookerUrl, bookingData);
 });
 Then('I should see that the booking was created successfully', async () => {
     logger.info("Create booking status - " + response.status());

@@ -7,7 +7,6 @@ Then(/I'm looking for a (.*)/, async (product: string) => {
     await searchPage.searchProduct(product);
 });
 Then(/I see (.*) search results/, async (product: string) => {
-    // await expect(page.locator('//span[contains(text(), "' + product + '")]')).toBeVisible();
     const searchPage = new SearchPage(page);
     await searchPage.verifyPresenceProduct(product);
 });

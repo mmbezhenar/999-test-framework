@@ -12,4 +12,4 @@ Feature: UI - Favorites page
 
     Examples:
       | item                       |
-      | https://999.md/ru/85609787 |
+      | https://999.md/ru/85060906 |

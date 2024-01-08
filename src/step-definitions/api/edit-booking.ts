@@ -3,6 +3,7 @@ import {BookingDTO} from "../../support/dto/booking-dto";
 import {APIResponse} from "playwright";
 import {Then, When} from "@cucumber/cucumber";
 import {logger} from "../../support/logger";
+import {config} from "../hooks/before-hook.api";
 
 let restClient = new RestClient();
 let bookingData: BookingDTO;
@@ -24,11 +25,11 @@ When('I send a PUT request to edit a booking', async (table) => {
     };
     logger.info(bookingData);
 
-    response = await restClient.put('/booking/7', bookingData);
+    response = await restClient.put('/booking/7', config.restfulBookerUrl, bookingData);
 
 });
 
 Then('I should see that the booking was edited successfully', async () => {
     logger.info(response.status());
-   //  expect(responseBody.firstname).toBe("James");
+    //  expect(responseBody.firstname).toBe("James");
 });

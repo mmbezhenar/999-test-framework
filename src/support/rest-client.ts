@@ -23,8 +23,8 @@ export class RestClient {
         });
     }
 
-    async get(endpoint: string, params = {}): Promise<APIResponse> {
-        return requestContext.get(config.restfulBookerUrl + endpoint,
+    async get(endpoint: string, baseUrl: string, params = {}): Promise<APIResponse> {
+        return requestContext.get(baseUrl + endpoint,
             {
                 headers: RestClient.setHeaders(),
                 params: params
@@ -32,8 +32,9 @@ export class RestClient {
         );
     }
 
-    async post(endpoint: string, params = {}): Promise<APIResponse> {
-        return requestContext.post(config.restfulBookerUrl + endpoint,
+
+    async post(endpoint: string, baseUrl: string, params = {}): Promise<APIResponse> {
+        return requestContext.post(baseUrl + endpoint,
             {
                 headers: RestClient.setHeaders(),
                 data: params
@@ -41,8 +42,8 @@ export class RestClient {
         );
     }
 
-    async put(endpoint: string, params = {}): Promise<APIResponse> {
-        return requestContext.put(config.restfulBookerUrl + endpoint,
+    async put(endpoint: string, baseUrl: string, params = {}): Promise<APIResponse> {
+        return requestContext.put(baseUrl + endpoint,
             {
                 headers: {
                     'Authorization': `Basic ${await this.getToken()}`,
