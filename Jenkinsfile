@@ -10,7 +10,7 @@ pipeline {
             steps {
                 script {
                     // Install Node.js and npm (if not already installed)
-                    tool 'NodeJS'
+                    sh "npm install"
                     // Install Playwright
                     sh "npm install -g @playwright/test@${PLAYWRIGHT_VERSION}"
                     sh 'npx playwright install'
