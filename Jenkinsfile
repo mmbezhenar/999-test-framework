@@ -29,8 +29,12 @@ pipeline {
                 script {
                     // Install project dependencies
                     sh 'npm install'
-                    // Run tests
-                    sh 'cucumber-js test'
+                    // Run tests without using nohup on Windows
+                    if (isUnix()) {
+                        sh 'nohup npx playwright test &'
+                    } else {
+                        sh 'npx playwright test'
+                    }
                 }
             }
             post {
@@ -41,4 +45,12 @@ pipeline {
             }
         }
     }
+}
+
+def isUnix() {
+    return !isWindows()
+}
+
+def isWindows() {
+    return System.properties['os.name'].toLowerCase().contains('win')
 }
