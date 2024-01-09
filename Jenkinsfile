@@ -6,17 +6,19 @@ pipeline {
     }
 
     stages {
-        stage('Install Dependencies') {
-            steps {
-                script {
-                    // Install Node.js and npm (if not already installed)
-                    sh "npm install"
-                    // Install Playwright
-                    sh "npm install -g @playwright/test@${PLAYWRIGHT_VERSION}"
-                    sh 'npx playwright install'
-                }
-            }
-        }
+     stage('Install Dependencies') {
+         steps {
+             script {
+                 // Install Node.js and npm
+                 sh 'curl -sL https://deb.nodesource.com/setup_14.x | bash -'
+                 sh 'apt-get install -y nodejs'
+
+                 // Install Playwright
+                 sh "npm install -g @playwright/test@${PLAYWRIGHT_VERSION}"
+                 sh 'npx playwright install'
+             }
+         }
+     }
 
         stage('Help') {
             steps {
