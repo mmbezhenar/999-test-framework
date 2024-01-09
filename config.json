@@ -1,13 +1,18 @@
 {
-  "baseUrl": "https://999.md/",
-  "restfulBookerUrl": "https://restful-booker.herokuapp.com",
-  "petStoreUrl" : "https://petstore.swagger.io/v2",
-  "loginUrl": "https://simpalsid.com/user/login?project_id=999a46c6-e6a6-11e1-a45f-28376188709b&lang=ru&redirect_url=https://999.md/ru/",
-  "credentials": {
-    "email": "playright.2024@gmail.com",
-    "password": "test123",
-    "username": "TestPlaywright"
+  "youtube": {
+    "baseUrl": "https://www.youtube.com/"
   },
+  "999": {
+    "baseUrl": "https://999.md/",
+    "loginUrl": "https://simpalsid.com/user/login?project_id=999a46c6-e6a6-11e1-a45f-28376188709b&lang=ru&redirect_url=https://999.md/ru/",
+    "credentials": {
+      "email": "playright.2024@gmail.com",
+      "password": "test123",
+      "username": "TestPlaywright"
+    }
+  },
+  "restfulBookerUrl": "https://restful-booker.herokuapp.com",
+  "petStoreUrl": "https://petstore.swagger.io/v2",
   "restfulBookerCredentials": {
     "username": "admin",
     "password": "password123"

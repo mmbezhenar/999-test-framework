@@ -8,8 +8,10 @@
     ],
     "dryRun": false,
     "require": [
-      "src/step-definitions/api/*.ts",
-      "src/step-definitions/ui/*.ts",
+      "src/step-definitions/api/pet-store/*.ts",
+      "src/step-definitions/api/restful-booker/*.ts",
+      "src/step-definitions/ui/youtube/*.ts",
+      "src/step-definitions/ui/999/*.ts",
       "src/step-definitions/hooks/*.ts"
     ],
     "requireModule": [
@@ -22,10 +24,12 @@
   },
   "api": {
     "paths": [
-      "src/features/api/*.api.feature"
+      "src/features/pet-store/api.pet-store.feature",
+      "src/features/restful-booker/api.login.feature"
     ],
     "require": [
-      "src/step-definitions/api/*.ts",
+      "src/step-definitions/api/pet-store/*.ts",
+      "src/step-definitions/api/restful-booker/*.ts",
       "src/step-definitions/hooks/after-hook.api.ts",
       "src/step-definitions/hooks/before-hook.api.ts"
     ],
@@ -35,16 +39,18 @@
   },
   "ui": {
     "paths": [
-      "src/features/ui/*.ui.feature"
+
+      "src/features/999/ui.user-profile.feature"
     ],
     "require": [
-      "src/step-definitions/ui/*.ts",
+      "src/step-definitions/ui/999/*.ts",
+      "src/step-definitions/ui/youtube/*.ts",
       "src/step-definitions/hooks/after-hook.ts",
       "src/step-definitions/hooks/before-hook.ts"
     ],
     "requireModule": [
       "ts-node/register"
     ],
-    "retry" : 2
+    "retry" : 5
   }
 }

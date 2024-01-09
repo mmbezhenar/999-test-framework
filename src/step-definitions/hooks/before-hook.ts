@@ -10,13 +10,17 @@ let page: Page;
 setDefaultTimeout(60000);
 
 BeforeAll(async () => {
-    browser = await chromium.launch({ headless: false,
-        args:['--start-maximized']});
-});
+        browser = await chromium.launch({
+            headless: false,
+            args: ['--start-maximized']
+        });
+    }
+);
 
 Before(async () => {
-    context = await browser.newContext({ viewport: null});
-    page = await context.newPage();
-});
+        context = await browser.newContext({viewport: null});
+        page = await context.newPage();
+    }
+);
 
 export {page, browser, context, config}

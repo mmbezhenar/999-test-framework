@@ -5,9 +5,10 @@ import * as config from "../../../config.json";
 let requestContext: APIRequestContext;
 
 BeforeAll(async () => {
-    requestContext = await request.newContext(
-        {ignoreHTTPSErrors: true}
-    );
-});
+        requestContext = await request.newContext(
+            {ignoreHTTPSErrors: true}
+        );
+    }
+);
 
 export {requestContext, config}

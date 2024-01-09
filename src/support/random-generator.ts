@@ -6,7 +6,7 @@ export default class RandomGenerator {
 
 
     static async generateUsername() {
-        this.generatedUsername = config.credentials.username + Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+        this.generatedUsername = config["999"].credentials.username + Math.floor(Math.random() * 1000).toString().padStart(3, '0');
         return this.generatedUsername;
     }
 
@@ -16,4 +16,5 @@ export default class RandomGenerator {
         const ransomNumber = Math.floor(Math.random() * (defaultMax - defaultMin + 1)) + defaultMin;
         return ransomNumber.toString();
     }
+
 }
