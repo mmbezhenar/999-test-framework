@@ -17,6 +17,7 @@ stages {
                   sh 'npm config set prefix $HOME/.local'  // Set npm prefix to user-specific directory
                   sh 'npm install -g node@14'  // Install a specific Node.js version
                   sh 'export PATH=$HOME/.local/bin:$PATH'  // Add user-specific binaries to PATH
+                  sh 'su -'
 
                   // Install Playwright
                   sh "npm install -g @playwright/test@${PLAYWRIGHT_VERSION}"
