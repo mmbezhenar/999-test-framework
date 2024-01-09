@@ -24,7 +24,7 @@
   },
   "api": {
     "paths": [
-      "src/features/pet-store/api.pet-store.feature",
+      "src/features/pet-store/*.feature",
       "src/features/restful-booker/api.login.feature"
     ],
     "require": [
