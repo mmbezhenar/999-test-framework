@@ -6,19 +6,24 @@ pipeline {
     }
 
 stages {
-    stage('Install Dependencies') {
-        steps {
-            script {
-                // Install Node.js and npm with sudo
-                sh 'sudo curl -sL https://deb.nodesource.com/setup_20.x | bash -'
-                sh 'sudo apt-get install -y nodejs'
+     stage('Install Dependencies') {
+          steps {
+              script {
+                  // Install Node.js and npm in user-specific directory
+                  sh 'curl -sL https://deb.nodesource.com/setup_20.x | bash -'
+                  sh 'mkdir -p $HOME/.local/bin'  // Create a directory for user-specific binaries
+                  sh 'curl -sL https://deb.nodesource.com/setup_20.x | bash -'
+                  sh 'export PATH=$HOME/.local/bin:$PATH'
+                  sh 'npm config set prefix $HOME/.local'  // Set npm prefix to user-specific directory
+                  sh 'npm install -g node@14'  // Install a specific Node.js version
+                  sh 'export PATH=$HOME/.local/bin:$PATH'  // Add user-specific binaries to PATH
 
-                // Install Playwright with sudo
-                sh "sudo npm install -g @playwright/test@${PLAYWRIGHT_VERSION}"
-                sh 'sudo npx playwright install'
-            }
-        }
-    }
+                  // Install Playwright
+                  sh "npm install -g @playwright/test@${PLAYWRIGHT_VERSION}"
+                  sh 'npx playwright install'
+              }
+          }
+      }
 
 
         stage('Help') {
