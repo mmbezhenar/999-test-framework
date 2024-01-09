@@ -5,20 +5,21 @@ pipeline {
         PLAYWRIGHT_VERSION = '1.15.1' // Specify the desired Playwright version
     }
 
-    stages {
-     stage('Install Dependencies') {
-         steps {
-             script {
-                 // Install Node.js and npm
-                 sh 'curl -sL https://deb.nodesource.com/setup_20.x | bash -'
-                 sh 'apt-get install -y nodejs'
+stages {
+    stage('Install Dependencies') {
+        steps {
+            script {
+                // Install Node.js and npm with sudo
+                sh 'sudo curl -sL https://deb.nodesource.com/setup_20.x | bash -'
+                sh 'sudo apt-get install -y nodejs'
 
-                 // Install Playwright
-                 sh "npm install -g @playwright/test@${PLAYWRIGHT_VERSION}"
-                 sh 'npx playwright install'
-             }
-         }
-     }
+                // Install Playwright with sudo
+                sh "sudo npm install -g @playwright/test@${PLAYWRIGHT_VERSION}"
+                sh 'sudo npx playwright install'
+            }
+        }
+    }
+
 
         stage('Help') {
             steps {
