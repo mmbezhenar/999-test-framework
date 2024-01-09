@@ -26,26 +26,23 @@ pipeline {
             }
         }
 
-        stage('Run Tests') {
-            steps {
-                script {
-                    // Install project dependencies
-                    sh 'npm install'
-                    // Run tests without using nohup on Windows
-                    if (isUnix()) {
-                        sh 'nohup cucumber-js test &'
-                    } else {
-                        sh 'cucumber-js test'
-                    }
-                }
-            }
-            post {
-                success {
-                    archiveArtifacts(artifacts: 'homepage-*.png', followSymlinks: false)
-                    sh 'rm -rf *.png'
-                }
-            }
-        }
+     stage('Run Tests') {
+         steps {
+             script {
+                 // Install project dependencies
+                 sh 'npm install'
+
+                 // Run tests
+                 sh 'cucumber-js test'
+             }
+         }
+         post {
+             success {
+                 archiveArtifacts(artifacts: 'homepage-*.png', followSymlinks: false)
+                 sh 'rm -rf *.png'
+             }
+         }
+     }
     }
 }
 
