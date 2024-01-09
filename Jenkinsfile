@@ -31,9 +31,9 @@ pipeline {
                     sh 'npm install'
                     // Run tests without using nohup on Windows
                     if (isUnix()) {
-                        sh 'nohup npx playwright test &'
+                        sh 'nohup cucumber-js test &'
                     } else {
-                        sh 'npx playwright test'
+                        sh 'cucumber-js test'
                     }
                 }
             }
